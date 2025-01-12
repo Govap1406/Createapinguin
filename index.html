@@ -7,154 +7,244 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
+            background-color: #e0f7fa;
             margin: 0;
             padding: 0;
-            background: #e0f7fa;
-            color: #333;
         }
+
         header {
             text-align: center;
             padding: 20px;
-            background: #00695c;
-            color: white;
-        }
-        header h1 {
-            font-size: 2.5em;
-        }
-        section {
-            padding: 20px;
-            margin: 10px;
-        }
-        #create-section, #meet-section {
-            display: none;
-        }
-        .button {
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
             background-color: #00796b;
             color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #004d40;
-        }
-        .customization-buttons button {
-            margin: 5px;
-            padding: 10px;
-            border-radius: 50%;
-            background-color: #4db6ac;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-        .customization-buttons button:hover {
-            background-color: #00897b;
-        }
-        .penguin {
-            text-align: center;
-            margin: 20px;
-        }
-        .penguin img {
-            width: 150px;
-        }
-    </style>
-    <script>
-        function toggleSection(sectionId) {
-            document.querySelectorAll('section').forEach(section => section.style.display = 'none');
-            document.getElementById(sectionId).style.display = 'block';
         }
 
-        function customizePenguin(attribute, value) {
-            const penguin = document.getElementById('penguin');
-            switch (attribute) {
-                case 'belly':
-                    penguin.querySelector('.belly').style.fill = value;
-                    break;
-                case 'eyes':
-                    penguin.querySelector('.eyes').style.fill = value;
-                    break;
-                case 'feet':
-                    penguin.querySelector('.feet').style.fill = value;
-                    break;
-                case 'scarf':
-                    penguin.querySelector('.scarf').style.display = value ? 'block' : 'none';
-                    break;
-                case 'hat':
-                    penguin.querySelector('.hat').style.display = value ? 'block' : 'none';
-                    break;
-            }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
         }
-    </script>
+
+        .section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .customization-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .penguin-preview {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            background-color: black;
+            border-radius: 50%;
+            margin: 20px auto;
+        }
+
+        .penguin-preview .belly {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 100px;
+            height: 140px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .penguin-preview .eye {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .penguin-preview .eye.left {
+            top: 30px;
+            left: 50px;
+        }
+
+        .penguin-preview .eye.right {
+            top: 30px;
+            right: 50px;
+        }
+
+        .penguin-preview .foot {
+            position: absolute;
+            bottom: 10px;
+            width: 50px;
+            height: 20px;
+            background-color: orange;
+            border-radius: 10px;
+        }
+
+        .penguin-preview .foot.left {
+            left: 20px;
+        }
+
+        .penguin-preview .foot.right {
+            right: 20px;
+        }
+
+        .penguin-preview .scarf {
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            width: 160px;
+            height: 20px;
+            background-color: red;
+        }
+
+        .penguin-preview .hat {
+            position: absolute;
+            top: -30px;
+            left: 50px;
+            width: 100px;
+            height: 50px;
+            background-color: blue;
+            border-radius: 50px 50px 0 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #00796b;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .category {
+            padding: 20px;
+            border: 2px solid #004d40;
+            border-radius: 10px;
+            background-color: #b2dfdb;
+            max-width: 300px;
+        }
+
+        .category h3 {
+            color: #004d40;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>🐧 Create a Pingu 🐧</h1>
     </header>
 
-    <section id="intro-section">
-        <h2>Welcome to Create a Pingu!</h2>
-        <p>Los pingüinos son aves marinas extraordinarias que han conquistado corazones por su peculiar apariencia y su resistencia en climas extremos. Aunque no vuelan, su destreza en el agua y su carácter entrañable los convierten en un símbolo de adaptabilidad y comunidad.</p>
-        <blockquote>"Como los pingüinos, siempre podemos encontrar fuerza en la unión y la habilidad de convertir desafíos en aventuras."</blockquote>
-        <button class="button" onclick="toggleSection('create-section')">Start Creating</button>
-        <button class="button" onclick="toggleSection('meet-section')">Learn More About Penguins</button>
+    <section class="section">
+        <p>Welcome to Create a Pingu! Here you can design your very own penguin and learn more about these fascinating creatures. 
+        Penguins are a symbol of resilience, teamwork, and charm—just like your personalized Pingu!</p>
+        <p><em>"Life is better with a little waddle and a lot of heart."</em></p>
+        <button onclick="startCreating()">Start Creating</button>
+        <button onclick="learnMore()">Learn More About Penguins</button>
     </section>
 
-    <section id="create-section">
+    <section id="customization-area" class="section">
         <h2>Customize Your Penguin</h2>
-        <div class="penguin">
-            <svg id="penguin" width="150" height="200">
-                <circle class="belly" cx="75" cy="100" r="50" fill="#fff"></circle>
-                <circle class="eyes" cx="55" cy="80" r="5" fill="#000"></circle>
-                <circle class="eyes" cx="95" cy="80" r="5" fill="#000"></circle>
-                <ellipse class="feet" cx="60" cy="150" rx="10" ry="5" fill="#ffcc80"></ellipse>
-                <ellipse class="feet" cx="90" cy="150" rx="10" ry="5" fill="#ffcc80"></ellipse>
-                <rect class="scarf" x="50" y="65" width="50" height="10" fill="#ff5252" style="display: none;"></rect>
-                <rect class="hat" x="50" y="30" width="50" height="20" fill="#1976d2" style="display: none;"></rect>
-            </svg>
+        <div class="penguin-preview">
+            <div class="belly"></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="foot left"></div>
+            <div class="foot right"></div>
         </div>
-        <div class="customization-buttons">
-            <button onclick="customizePenguin('belly', '#ffcdd2')">Belly: Pink</button>
-            <button onclick="customizePenguin('belly', '#c8e6c9')">Belly: Green</button>
-            <button onclick="customizePenguin('eyes', '#42a5f5')">Eyes: Blue</button>
-            <button onclick="customizePenguin('eyes', '#ffca28')">Eyes: Yellow</button>
-            <button onclick="customizePenguin('feet', '#ffab91')">Feet: Coral</button>
-            <button onclick="customizePenguin('feet', '#ffe082')">Feet: Gold</button>
-            <button onclick="customizePenguin('scarf', true)">Add Scarf</button>
-            <button onclick="customizePenguin('scarf', false)">Remove Scarf</button>
-            <button onclick="customizePenguin('hat', true)">Add Hat</button>
-            <button onclick="customizePenguin('hat', false)">Remove Hat</button>
+        <button onclick="changeBellyColor()">Change Belly Color</button>
+        <button onclick="changeEyeColor()">Change Eye Color</button>
+        <button onclick="changeFootColor()">Change Foot Color</button>
+        <button onclick="toggleScarf()">Add/Remove Scarf</button>
+        <button onclick="toggleHat()">Add/Remove Hat</button>
+    </section>
+
+    <section id="meet-the-penguins" class="section">
+        <h2>Meet the Penguins</h2>
+        <div class="categories">
+            <div class="category">
+                <h3>Emperor Penguin</h3>
+                <p>The largest of all penguin species, known for their majestic stature and incredible survival skills in the Antarctic.</p>
+            </div>
+            <div class="category">
+                <h3>Adelie Penguin</h3>
+                <p>Small and feisty, Adelie penguins are characterized by their bold personality and striking black-and-white appearance.</p>
+            </div>
+            <div class="category">
+                <h3>Rockhopper Penguin</h3>
+                <p>Named for their hopping movements, these penguins are known for their wild yellow crests and fearless nature.</p>
+            </div>
+            <div class="category">
+                <h3>King Penguin</h3>
+                <p>Second only to the Emperor penguin in size, King penguins boast vibrant orange markings and a regal posture.</p>
+            </div>
         </div>
     </section>
 
-    <section id="meet-section">
-        <h2>Meet the Penguins</h2>
-        <div>
-            <h3>1. Emperor Penguin</h3>
-            <p>The largest penguin species, known for their majestic size and endurance in freezing temperatures.</p>
-        </div>
-        <div>
-            <h3>2. King Penguin</h3>
-            <p>Recognizable by their vibrant orange patches, these penguins are the second largest species.</p>
-        </div>
-        <div>
-            <h3>3. Little Blue Penguin</h3>
-            <p>The smallest penguin species, often called fairy penguins due to their adorable appearance.</p>
-        </div>
-        <div>
-            <h3>4. Rockhopper Penguin</h3>
-            <p>Named for their habit of hopping among rocky shores, these penguins are known for their spiky feathers.</p>
-        </div>
-        <div>
-            <h3>5. Adelie Penguin</h3>
-            <p>A classic Antarctic penguin, easily identifiable by the white ring around their eyes.</p>
-        </div>
-        <div>
-            <h3>6. Chinstrap Penguin</h3>
-            <p>Distinguished by the black line under their chin, giving the appearance of a helmet strap.</p>
-        </div>
-    </section>
+    <script>
+        function startCreating() {
+            document.getElementById('customization-area').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function learnMore() {
+            document.getElementById('meet-the-penguins').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function changeBellyColor() {
+            const belly = document.querySelector('.belly');
+            belly.style.backgroundColor = belly.style.backgroundColor === 'white' ? '#f1c40f' : 'white';
+        }
+
+        function changeEyeColor() {
+            const eyes = document.querySelectorAll('.eye');
+            eyes.forEach(eye => {
+                eye.style.backgroundColor = eye.style.backgroundColor === 'white' ? '#3498db' : 'white';
+            });
+        }
+
+        function changeFootColor() {
+            const feet = document.querySelectorAll('.foot');
+            feet.forEach(foot => {
+                foot.style.backgroundColor = foot.style.backgroundColor === 'orange' ? '#e74c3c' : 'orange';
+            });
+        }
+
+        function toggleScarf() {
+            const penguin = document.querySelector('.penguin-preview');
+            const scarf = document.querySelector('.scarf');
+            if (scarf) {
+                penguin.removeChild(scarf);
+            } else {
+                const newScarf = document.createElement('div');
+                newScarf.classList.add('scarf');
+                penguin.appendChild(newScarf);
+            }
+        }
+
+        function toggleHat() {
+            const penguin = document.querySelector('.penguin-preview');
+            const hat = document.querySelector('.hat');
+            if (hat) {
+                penguin.removeChild(hat);
+            } else {
+                const newHat = document.createElement('div');
+                newHat.classList.add('hat');
+                penguin.appendChild(newHat);
+            }
+        }
+    </script>
 </body>
 </html>
